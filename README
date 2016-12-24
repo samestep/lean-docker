@@ -7,4 +7,4 @@ system.
 
 To run it, you need to put a public ssh key on the current directory,
 named id_rsa.pub.  Once the container is running, just ssh -Y <IP> and
-execute /root/lean/bin/leanemacs_build
+execute /root/lean/bin/leanemacs_build (although YMMV)
