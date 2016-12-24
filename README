@@ -6,5 +6,5 @@ Quick and dirty hack to run the latest Lean on an Ubuntu 14.04 LTS
 system.
 
 To run it, you need to put a public ssh key on the current directory,
-named id_rsa.pub.  Once the container is running, just ssh -Y <IP> and
-execute /root/lean/bin/leanemacs_build (although YMMV)
+named id_rsa.pub.  Once the container is running, just 
+ssh -Y -l root <IP> and execute /root/lean/bin/leanemacs_build (although YMMV)
