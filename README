@@ -1,5 +1,3 @@
-Dockerfile that creates an environment for the Lean Theorem Prover
-
 https://github.com/leanprover/lean
 
 Quick and dirty hack to run the latest Lean on an Ubuntu 14.04 LTS
