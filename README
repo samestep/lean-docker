@@ -2,7 +2,7 @@ Dockerfile that creates an environment for the Lean Theorem Prover
 
 https://github.com/leanprover/lean
 
-Quick and dirty hack to run the latest Lean on a Ubuntu 14.04 LTS
+Quick and dirty hack to run the latest Lean on an Ubuntu 14.04 LTS
 system.
 
 To run it, you need to put a public ssh key on the current directory,
