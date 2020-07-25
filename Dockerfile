@@ -1,20 +1,15 @@
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
-MAINTAINER fchalub@br.ibm.com
+# https://leanprover-community.github.io/install/debian_details.html
 
-WORKDIR /root/
+RUN apt-get update && apt-get -y install \
+    curl git python3 python3-pip python3-venv
 
-RUN apt-get update -y && apt-get install -y git libgmp-dev libmpfr-dev cmake build-essential emacs libgl1-mesa-glx openssh-server && apt-get clean
+# https://stackoverflow.com/a/53605439/5044950
+RUN curl https://raw.githubusercontent.com/Kha/elan/v0.10.2/elan-init.sh -sSf \
+    | bash -s -- -y
+ENV PATH "/root/.elan/bin:$PATH"
 
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-
-RUN cd /root && \
-    git clone https://github.com/leanprover/lean.git && \
-    cd /root/lean && \
-    mkdir -p build/release && cd build/release && cmake ../../src && make
-
-RUN mkdir -p /var/run/sshd && mkdir -p /root/.ssh && chmod 0700 /var/run/sshd /root/.ssh
-COPY id_rsa.pub /root/.ssh/authorized_keys
-
-CMD ["/usr/sbin/sshd", "-D"]
+ENV PATH "$PATH:/root/.local/bin"
+RUN python3 -m pip install --user pipx
+RUN pipx install mathlibtools
