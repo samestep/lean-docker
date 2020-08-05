@@ -9,12 +9,14 @@ docker:
       | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
   script:
     - >-
-      docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
+      docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+      || docker pull $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
       || docker pull $CI_REGISTRY_IMAGE:master
       || true
     - >-
       docker build
       --pull
+      --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
       --cache-from $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME
       --cache-from $CI_REGISTRY_IMAGE:master
       --tag $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
