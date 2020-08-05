@@ -1,3 +1,4 @@
 include:
   - project: 'sestep/docker-build-ci-yml'
+    ref: 6f57a71c56f8a958806d56a7e92bf0f2bf08d2e8
     file: 'gitlab-ci.yml'
